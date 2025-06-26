@@ -150,5 +150,10 @@ namespace formularz___lab_9
             txtDataDecyzji.Clear();
             txtPieczatkaPodpis.Clear();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
