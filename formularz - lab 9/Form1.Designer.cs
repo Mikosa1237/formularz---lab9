@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             // Inicjalizacja kontrolek
+            this.btnWybierzBaze = new System.Windows.Forms.Button();
             this.lblAlbum = new System.Windows.Forms.Label();
             this.txtAlbum = new System.Windows.Forms.TextBox();
             this.lblNazwiskoImie = new System.Windows.Forms.Label();
@@ -62,12 +63,21 @@
             this.btnZapisz = new System.Windows.Forms.Button();
             this.btnZaladuj = new System.Windows.Forms.Button();
 
+            // Przycisk wyboru bazy
+            this.btnWybierzBaze.Text = "Wybierz bazę danych";
+            this.btnWybierzBaze.Left = 20;
+            this.btnWybierzBaze.Top = 10;
+            this.btnWybierzBaze.Width = 180;
+            this.btnWybierzBaze.Click += new System.EventHandler(this.btnWybierzBaze_Click);
+            this.Controls.Add(this.btnWybierzBaze);
+
             // Ustawienia pozycji i rozmiarów
-            int y = 20;
+            int y = 50;
             int labelWidth = 180;
             int boxWidth = 250;
             int height = 24;
             int gap = 32;
+            int sectionGap = 18;
 
             // Numer albumu
             this.lblAlbum.Text = "Numer albumu";
@@ -108,7 +118,7 @@
             this.txtKierunekStopien.Top = y;
             this.txtKierunekStopien.Width = boxWidth;
             this.txtKierunekStopien.Height = height;
-            y += gap;
+            y += gap + sectionGap;
             // Data wniosku
             this.lblDataWniosku.Text = "Data wniosku";
             this.lblDataWniosku.Left = 20;
@@ -148,7 +158,7 @@
             this.txtProwadzacy.Top = y;
             this.txtProwadzacy.Width = boxWidth;
             this.txtProwadzacy.Height = height;
-            y += gap;
+            y += gap + sectionGap;
             // Uzasadnienie
             this.lblUzasadnienie.Text = "Uzasadnienie";
             this.lblUzasadnienie.Left = 20;
@@ -157,8 +167,8 @@
             this.txtUzasadnienie.Left = 20 + labelWidth + 10;
             this.txtUzasadnienie.Top = y;
             this.txtUzasadnienie.Width = boxWidth;
-            this.txtUzasadnienie.Height = height;
-            y += gap;
+            this.txtUzasadnienie.Height = height * 2;
+            y += gap * 2 + sectionGap;
             // Data i podpis studenta
             this.lblDataPodpisStudenta.Text = "Data i podpis studenta";
             this.lblDataPodpisStudenta.Left = 20;
@@ -198,7 +208,7 @@
             this.txtKomisja3.Top = y;
             this.txtKomisja3.Width = boxWidth;
             this.txtKomisja3.Height = height;
-            y += gap;
+            y += gap + sectionGap;
             // Data decyzji
             this.lblDataDecyzji.Text = "Data decyzji";
             this.lblDataDecyzji.Left = 20;
@@ -273,34 +283,32 @@
 
         #endregion
 
+        private System.Windows.Forms.Button btnWybierzBaze;
         private System.Windows.Forms.Label lblAlbum;
         private System.Windows.Forms.Label lblNazwiskoImie;
+        private System.Windows.Forms.TextBox txtNazwiskoImie;
         private System.Windows.Forms.Label lblSemestrRok;
+        private System.Windows.Forms.TextBox txtSemestrRok;
         private System.Windows.Forms.Label lblKierunekStopien;
+        private System.Windows.Forms.TextBox txtKierunekStopien;
         private System.Windows.Forms.Label lblDataWniosku;
+        private System.Windows.Forms.TextBox txtDataWniosku;
         private System.Windows.Forms.Label lblPrzedmiot;
+        private System.Windows.Forms.TextBox txtPrzedmiot;
         private System.Windows.Forms.Label lblPunkty;
+        private System.Windows.Forms.TextBox txtPunkty;
         private System.Windows.Forms.Label lblProwadzacy;
+        private System.Windows.Forms.TextBox txtProwadzacy;
         private System.Windows.Forms.Label lblUzasadnienie;
+        private System.Windows.Forms.TextBox txtUzasadnienie;
         private System.Windows.Forms.Label lblDataPodpisStudenta;
+        private System.Windows.Forms.TextBox txtDataPodpisStudenta;
         private System.Windows.Forms.Label lblKomisja1;
         private System.Windows.Forms.Label lblKomisja2;
         private System.Windows.Forms.Label lblKomisja3;
         private System.Windows.Forms.Label lblDataDecyzji;
         private System.Windows.Forms.Label lblPieczatkaPodpis;
         private System.Windows.Forms.TextBox txtAlbum;
-        private System.Windows.Forms.TextBox txtNazwiskoImie;
-        private System.Windows.Forms.TextBox txtSemestrRok;
-        private System.Windows.Forms.TextBox txtKierunekStopien;
-        private System.Windows.Forms.TextBox txtDataWniosku;
-        private System.Windows.Forms.TextBox txtPrzedmiot;
-        private System.Windows.Forms.TextBox txtPunkty;
-        private System.Windows.Forms.TextBox txtProwadzacy;
-        private System.Windows.Forms.TextBox txtUzasadnienie;
-        private System.Windows.Forms.TextBox txtDataPodpisStudenta;
-        private System.Windows.Forms.TextBox txtKomisja1;
-        private System.Windows.Forms.TextBox txtKomisja2;
-        private System.Windows.Forms.TextBox txtKomisja3;
         private System.Windows.Forms.TextBox txtDataDecyzji;
         private System.Windows.Forms.TextBox txtPieczatkaPodpis;
         private System.Windows.Forms.Button btnZapisz;

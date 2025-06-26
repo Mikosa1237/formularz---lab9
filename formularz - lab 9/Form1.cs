@@ -2,13 +2,14 @@ using System;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
+using System.IO;
 
 namespace formularz___lab_9
 {
     public partial class Form1 : Form
     {
-        private string dbPath = "egzamin_komisyjny.db";
-        private string connStr => $"Data Source={dbPath};Version=3;";
+        private string dbPath = null;
+        private string connStr => dbPath == null ? null : $"Data Source={dbPath};Version=3;";
 
         public Form1()
         {
@@ -18,6 +19,7 @@ namespace formularz___lab_9
 
         private void CreateDatabaseIfNotExists()
         {
+            if (connStr == null) return;
             using (var conn = new SQLiteConnection(connStr))
             {
                 conn.Open();
@@ -34,8 +36,33 @@ namespace formularz___lab_9
             }
         }
 
+        private void btnWybierzBaze_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog())
+            {
+                dialog.Filter = "Baza danych SQLite (*.db)|*.db|Wszystkie pliki (*.*)|*.*";
+                dialog.Title = "Wybierz lub utwórz plik bazy danych";
+                dialog.OverwritePrompt = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    dbPath = dialog.FileName;
+                    if (!File.Exists(dbPath))
+                    {
+                        SQLiteConnection.CreateFile(dbPath);
+                    }
+                    CreateDatabaseIfNotExists();
+                    MessageBox.Show($"Wybrano bazę: {dbPath}", "Informacja");
+                }
+            }
+        }
+
         private void btnZapisz_Click(object sender, EventArgs e)
         {
+            if (connStr == null)
+            {
+                MessageBox.Show("Najpierw wybierz plik bazy danych!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             using (var conn = new SQLiteConnection(connStr))
             {
                 conn.Open();
@@ -66,6 +93,11 @@ namespace formularz___lab_9
 
         private void btnZaladuj_Click(object sender, EventArgs e)
         {
+            if (connStr == null)
+            {
+                MessageBox.Show("Najpierw wybierz plik bazy danych!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             using (var conn = new SQLiteConnection(connStr))
             {
                 conn.Open();
