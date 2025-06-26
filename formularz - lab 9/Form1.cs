@@ -155,5 +155,10 @@ namespace formularz___lab_9
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
